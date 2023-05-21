@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Proyecto</a>
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="loggedIn">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Opción 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Opción 2</a>
+          </li>
+        </ul>
+        <div class="dropdown" *ngIf="loggedIn" dropdown>
+            <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Hola !</a>
+            <div class="dropdown-menu mt-3" *dropdownMenu>
+                <a class="dropdown-item" (click)="logOut()">Salir</a>
+            </div>
+        </div>
+        <form *ngIf="!loggedIn" #loginForm = "ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+          <input
+           name = "username"
+           [(ngModel)]="model.username"
+            class="form-control me-2" 
+            type="text" 
+            placeholder="Usuario">
+          <input
+           name = "password"
+           [(ngModel)]="model.password"
+           class="form-control me-2" 
+           type="password" 
+           placeholder="Contraseña">
+          <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+    </div>
+</nav>
